@@ -1,0 +1,43 @@
+# Ignore OS/system files
+.DS_Store
+Thumbs.db
+
+# Ignore Composer dependencies
+vendor/
+
+# Ignore Node.js dependencies
+node_modules/
+
+# Ignore build files
+dist/
+*.log
+*.tmp
+*.cache
+
+# Ignore environment/configuration files
+.env
+.env.local
+*.bak
+*.swp
+
+# Ignore compiled assets
+assets/css/*.css.map
+assets/js/*.js.map
+
+# Ignore IDE/editor config files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore database files
+*.sql
+*.sqlite
+
+# Ignore backups and exports
+backups/
+exports/
+
+# Ignore debug/log files
+debug.log
+error_log
