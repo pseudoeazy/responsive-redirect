@@ -1,12 +1,13 @@
 {
     "name": "chibuzor/responsive-redirect",
-    "type": "library",
-    "license": "GPL",
-    "version": "1.0.0",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "description": "A WordPress plugin for responsive redirection based on device type.",
     "authors": [
         {
             "name": "Chibuzor",
-            "homepage": "https://www.chibuz.com"
+            "homepage": "https://www.chibuz.com",
+            "role": "Developer"
         }
     ],
     "require": {},
