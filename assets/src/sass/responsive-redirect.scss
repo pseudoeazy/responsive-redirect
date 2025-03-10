@@ -1,4 +1,4 @@
-@import 'base/mixins';
-@import 'base/reset';
-@import 'layouts/header';
-@import 'layouts/table';
+@use 'base/mixins';
+@use 'base/reset';
+@use 'layouts/header';
+@use 'layouts/table';

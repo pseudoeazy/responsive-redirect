@@ -4,9 +4,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: {
-    'responsive-redirect': './src/ts/responsive-redirect.ts',
-    'responsive-redirect': './src/sass/responsive-redirect.scss',
+    'responsive-redirect': [
+      './src/ts/responsive-redirect.ts', // TypeScript file
+      './src/sass/responsive-redirect.scss', // SCSS file
+    ],
   },
+
   output: {
     filename: 'js/[name].js',
     path: path.resolve(__dirname, 'dist'),

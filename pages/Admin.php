@@ -39,7 +39,7 @@ class Admin extends BaseController
     {
         add_action('admin_menu', [$this, 'create_submenu']);
         wp_enqueue_style($this->plugin_name, RESPONSIVE_REDIRECT_PLUGIN_URL . 'assets/dist/css/responsive-redirect.css', array(), $this->version, 'all');
-        wp_enqueue_script($this->plugin_name, RESPONSIVE_REDIRECT_PLUGIN_URL . 'assets/dist/js/responsive-redirect.js', array('jquery'), $this->version, false);
+        wp_enqueue_script($this->plugin_name, RESPONSIVE_REDIRECT_PLUGIN_URL . 'assets/dist/js/responsive-redirect.js', array('jquery'), $this->version, true);
     }
 
     public function create_submenu()
