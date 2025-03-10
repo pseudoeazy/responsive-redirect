@@ -1,0 +1,45 @@
+.responsive-redirect__header {
+  display: flex;
+  align-items: center;
+}
+
+.responsive-redirect__header span:last-child {
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+.responsive-redirect__button {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.wp-clean-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  text-align: left;
+}
+
+.wp-clean-table thead {
+  background-color: #0073aa; /* WordPress blue */
+  color: white;
+}
+
+.wp-clean-table th,
+.wp-clean-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.wp-clean-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9; /* Alternate row color */
+}
+
+.wp-clean-table tbody tr:hover {
+  background-color: #e5f3fb; /* Light hover effect */
+}
+
+.wp-clean-table [type='text'] {
+  width: 100%;
+}

@@ -10,10 +10,13 @@
             "role": "Developer"
         }
     ],
-    "require": {},
+    "require": {
+        "mobiledetect/mobiledetectlib": "^4.8"
+    },
     "autoload": {
         "psr-4": {
-            "ResponsiveRedirect\\Includes\\": "includes/"
+            "ResponsiveRedirect\\Includes\\": "includes/",
+            "ResponsiveRedirect\\Pages\\": "pages/"
         }
     }
 }

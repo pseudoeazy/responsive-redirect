@@ -7,6 +7,8 @@ vendor/
 
 # Ignore Node.js dependencies
 node_modules/
+assets/node_modules/
+assets/dist/
 
 # Ignore build files
 dist/
