@@ -1,0 +1,25 @@
+:root {
+  --error: #f77;
+  --blue: #0073aa; /* WordPress blue */
+  --white: #fff;
+  --gray: #ddd;
+}
+
+html {
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.button-error {
+  border: 1px solid var(--error) !important;
+  color: var(--error) !important;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

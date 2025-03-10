@@ -1,11 +1,13 @@
 <div class="wrap">
 
     <section>
-        <h1 class="responsive-redirect__header"><span class="dashicons dashicons-image-rotate"></span><span>Responsive Redirect Settings</span></h1>
+        <h1 class="responsive-redirect__header">
+            <span class="dashicons dashicons-image-rotate"></span><span>Responsive Redirect Settings</span>
+        </h1>
 
-        <div><button class="button-secondary responsive-redirect__button" type="button"><span class="dashicons dashicons-plus-alt2"></span> Add Redirect</button></div>
+
         <form method="POST" action="">
-            <table class="wp-clean-table">
+            <table class="responsive-redirect-table">
                 <thead>
                     <tr>
                         <th>Origin URL</th>
@@ -44,8 +46,12 @@
                     <tr valign="top">
                         <td></td>
                         <td>
-                            <input type="submit" name="save" value="Save Options"
-                                class="button-primary" />
+
+                            <button class="button-primary responsive-redirect__button" type="submit">
+                                <span class="dashicons dashicons-plus-alt2"></span> Save Options
+                            </button>
+
+
                         </td>
                     </tr>
                 </tbody>
@@ -53,33 +59,41 @@
         </form>
     </section>
 
-    <section>
+    <section class="responsive-redirect-list">
         <h2>Redirected Page List</h2>
         <table class="widefat">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Favorite Holiday</th>
+                    <th>Origin URL</th>
+                    <th>Redirect URL</th>
+                    <th>Actions <span class="dashicons dashicons-admin-generic"></span></th>
                 </tr>
             </thead>
-            <tfoot>
-                <tr>
-                    <th>Name</th>
-                    <th>Favorite Holiday</th>
-                </tr>
-            </tfoot>
+
             <tbody>
                 <tr>
-                    <td>Brad Williams</td>
-                    <td>Halloween</td>
+                    <td><?php bloginfo('wpurl'); ?>/books/sample-book</td>
+                    <td><?php bloginfo('wpurl'); ?>/books/sample-book/mobile-page-url</td>
+                    <td class="actions">
+                        <a href="#" class="button-secondary">Edit</a>
+                        <form><input type="submit" value="Delete" class="button button-error"></form>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Ozh Richard</td>
-                    <td>Talk Like a Pirate</td>
+                    <td><?php bloginfo('wpurl'); ?>/books/sample-book</td>
+                    <td><?php bloginfo('wpurl'); ?>/books/sample-book/mobile-page-url</td>
+                    <td class="actions">
+                        <a href="#" class="button-secondary">Edit</a>
+                        <form><input type="submit" value="Delete" class="button button-error"></form>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Justin Tadlock</td>
-                    <td>Christmas</td>
+                    <td><?php bloginfo('wpurl'); ?>/books/sample-book</td>
+                    <td><?php bloginfo('wpurl'); ?>/books/sample-book/mobile-page-url</td>
+                    <td class="actions">
+                        <a href="#" class="button-secondary">Edit</a>
+                        <form><input type="submit" value="Delete" class="button button-error"></form>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -87,11 +101,9 @@
         <div class="tablenav">
             <div class="tablenav-pages">
                 <span class="displaying-num">Displaying 1-20 of 69</span>
-
                 <span class="page-numbers current">1</span>
                 <a href="#" class="page-numbers">2</a>
                 <a href="#" class="page-numbers">3</a>
-                <a href="#" class="page-numbers">4</a>
                 <a href="#" class="next page-numbers">&raquo;</a>
             </div>
         </div>
