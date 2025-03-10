@@ -17,6 +17,8 @@
  * Text Domain:       responsive-redirect
  */
 
+use ResponsiveRedirect\Includes\BaseController;
+
 if (!defined('ABSPATH')) {
 	die;
 }
@@ -32,7 +34,7 @@ if (file_exists(__DIR__ . '/vendor/autoload.php')) {
 
 function responsive_redirect_activate()
 {
-	ResponsiveRedirect\Includes\Activator::activate();
+	ResponsiveRedirect\Includes\Activator::activate(new BaseController());
 }
 register_activation_hook(__FILE__, 'responsive_redirect_activate');
 

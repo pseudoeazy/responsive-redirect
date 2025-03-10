@@ -26,6 +26,25 @@
  */
 
 // If uninstall not called from WordPress, then exit.
-if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+if (! defined('WP_UNINSTALL_PLUGIN')) {
+	wp_die(sprintf(
+		__('%s should only be called when uninstalling the plugin.', 'pdev'),
+		__FILE__
+	));
 	exit;
+}
+
+$role = get_role('administrator');
+
+if (! empty($role)) {
+	$role->remove_cap('responsive-redirect-manage');
+}
+
+if (class_exists('ResponsiveRedirect\\Includes\\BaseController')) {
+	$baseController = new ResponsiveRedirect\Includes\BaseController();
+	$option = get_option($baseController->plugin_option_name);
+
+	if (isset($option)) {
+		delete_option($baseController->plugin_option_name);
+	}
 }

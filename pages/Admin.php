@@ -4,30 +4,11 @@ namespace ResponsiveRedirect\Pages;
 
 use ResponsiveRedirect\Includes\BaseController;
 
-/**
- * The admin-specific functionality of the plugin.
- *
- * @link       https://www.chibuz.com
- * @since      1.0.0
- *
- *  @namespace ResponsiveRedirect\Pages
- */
-
-/**
- * The admin-specific functionality of the plugin.
- *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
- *  @namespace ResponsiveRedirect\Pages
- * @author     Chibuzor Otuokwu <easy4sng@gmail.com>
- */
 
 class Admin extends BaseController
 {
 
-
-
+    protected $page_url =  'responsive-redirect-options';
     /**
      * Register the settings page for the admin area.
      * Register the stylesheets for the admin area.
@@ -37,18 +18,51 @@ class Admin extends BaseController
      */
     public function register()
     {
-        add_action('admin_menu', [$this, 'create_submenu']);
+        add_action('admin_menu', [$this, 'register_settings']);
+        add_action('admin_init', [$this, 'settings_init']);
         wp_enqueue_style($this->plugin_name, RESPONSIVE_REDIRECT_PLUGIN_URL . 'assets/dist/css/responsive-redirect.css', array(), $this->version, 'all');
         wp_enqueue_script($this->plugin_name, RESPONSIVE_REDIRECT_PLUGIN_URL . 'assets/dist/js/responsive-redirect.js', array('jquery'), $this->version, true);
     }
 
-    public function create_submenu()
+    public function register_settings()
     {
-        add_options_page('Responsive Redirect Settings', 'Responsive Redirect', 'manage_options', 'responsive-redirect-options', [$this, 'settings_page']);
+        add_options_page(
+            'Responsive Redirect Settings',
+            'Responsive Redirect',
+            'manage_options',
+            $this->page_url,
+            [$this, 'render_settings_page']
+        );
     }
 
-    public function settings_page()
+
+    public function settings_init()
     {
-        require_once __DIR__ . '/../templates/admin-settings-page.php';
+        register_setting('responsive_redirect_options', 'responsive_redirect_urls');
+
+        add_settings_section(
+            'responsive_redirect_section',
+            '',
+            '__return_false',
+            $this->page_url
+        );
+
+        add_settings_field(
+            'responsive_redirect_field',
+            'Redirect Rules',
+            [$this, 'render_fields'],
+            $this->page_url,
+            'responsive_redirect_section'
+        );
+    }
+
+    public function render_settings_page()
+    {
+        require_once __DIR__ . '/../templates/settings-page.php';
+    }
+
+    public function render_fields()
+    {
+        require_once __DIR__ . '/../templates/settings-field.php';
     }
 }

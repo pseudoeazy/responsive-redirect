@@ -27,6 +27,16 @@ class BaseController
     protected $plugin_name;
 
     /**
+     * The unique identifier of this plugin in the options table.
+     *
+     * @since    1.0.0
+     * @access   public
+     * @var      string    $plugin_option_name    The string used to uniquely identify this plugin in the options table.
+     */
+    public $plugin_option_name;
+
+
+    /**
      * The current version of the plugin.
      *
      * @since    1.0.0
@@ -50,6 +60,7 @@ class BaseController
             $this->version = '1.0.0';
         }
         $this->plugin_name = 'responsive-redirect';
+        $this->plugin_option_name = 'responsive_redirect';
     }
 
     /**

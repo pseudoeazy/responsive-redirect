@@ -16,12 +16,23 @@ namespace ResponsiveRedirect\Includes;
 class Activator
 {
 
+
+
 	/**
 	 * Short Description. (use period)
 	 *
-	 * Long Description.
-	 *
 	 * @since    1.0.0
 	 */
-	public static function activate() {}
+	public static function activate(BaseController $baseController)
+	{
+		$role = get_role('administrator');
+
+		if (!empty($role)) {
+			$role->add_cap('responsive-redirect-manage');
+		}
+
+		add_option($baseController->plugin_option_name, array(
+			'redirect_urls' => []
+		));
+	}
 }
