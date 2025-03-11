@@ -1,7 +1,6 @@
-=== Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
-Donate link: https://www.chibuz.com/
-Tags: comments, spam
+# Responsive Redirect Plugin
+Contributors: (@engreazy )
+Donate link: https://paypal.me/eazyisrael?country.x=PH&locale.x=en_US
 Requires at least: 3.0.1
 Tested up to: 3.4
 Stable tag: 4.3
@@ -10,12 +9,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
 
-== Description ==
+## Description
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
-
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+The **Responsive Redirect Plugin** allows WordPress site owners to **redirect users based on device type (mobile, tablet, or desktop)**. This ensures that users always land on the most optimized version of the site for their screen size.
 
 A few notes about the sections above:
 
