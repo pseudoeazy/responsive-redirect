@@ -34,7 +34,6 @@ function onDeviceTypeChange(deviceType: HTMLInputElement) {
     if (deviceType.checked && isDevice) {
       checkBox.checked = false;
       checkBox.disabled = true;
-      console.log({ deviceToRedirect: deviceType.value });
     } else {
       checkBox.disabled = false;
     }
@@ -42,10 +41,14 @@ function onDeviceTypeChange(deviceType: HTMLInputElement) {
 }
 
 window.addEventListener('DOMContentLoaded', function () {
-  // initial selection on page load
-  [...getResponsiveRadioButtons()].forEach((deviceType) =>
-    onDeviceTypeChange(deviceType)
+  handleDeviceSelection();
+
+  const initialDeviceType = document.querySelector<HTMLInputElement>(
+    '.rr_device_type:checked'
   );
 
-  handleDeviceSelection();
+  if (initialDeviceType) {
+    console.log('initial device:', initialDeviceType.value);
+    onDeviceTypeChange(initialDeviceType);
+  }
 });

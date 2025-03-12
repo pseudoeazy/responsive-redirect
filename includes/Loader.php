@@ -5,7 +5,7 @@ namespace ResponsiveRedirect\Includes;
 use ResponsiveRedirect\Pages\Admin;
 
 /**
- * The loader that's responsible for maintaining and registering all hooks that power
+ * The loader that's responsible for maintaining and registering all hooks that powers
  * the plugin.
  *
  * @since    1.0.0

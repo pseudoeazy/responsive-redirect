@@ -1,9 +1,6 @@
 <?php
 // Get current data
 $responsive_rules = $this->get_rules();
-echo "<pre>";
-print_r($responsive_rules);
-echo "</pre>";
 
 // Check POST request to delete responsive_rule
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['responsive_redirect_nonce'])) {
