@@ -25,7 +25,7 @@ if (isset($_GET['id'])) {
         </tr>
         <tr>
             <td>
-                <p><label>Device Type</label></p>
+                <p><label>On Device Type</label></p>
 
                 <p>
                     <input type="radio" name="responsive_redirect_urls[device_type]" value="desktop"
@@ -50,7 +50,7 @@ if (isset($_GET['id'])) {
             </td>
 
             <td>
-                <p><label>Device Type</label></p>
+                <p><label>Redirect To: Device Type</label></p>
                 <p><input type="checkbox" class="rr_redirect_device_type" name="responsive_redirect_urls[redirect_device_desktop]" <?php checked($rule['redirect_device_desktop'] ?? '', 'on'); ?> /> Desktop</p>
                 <p><input type="checkbox" class="rr_redirect_device_type" name="responsive_redirect_urls[redirect_device_tablet]" <?php checked($rule['redirect_device_tablet'] ?? '', 'on'); ?> /> Tablet</p>
                 <p><input type="checkbox" class="rr_redirect_device_type" name="responsive_redirect_urls[redirect_device_mobile]" <?php checked($rule['redirect_device_mobile'] ?? '', 'on'); ?> /> Mobile</p>

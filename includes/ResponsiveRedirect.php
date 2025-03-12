@@ -23,7 +23,7 @@ class ResponsiveRedirect extends BaseController
     public function register()
     {
         // Hooks into 'template_redirect' to handle page redirection before WordPress outputs the template.
-        add_action('template_redirect', [$this, 'get_request_page_path']);
+        add_action('template_redirect', [$this, 'handle_redirect']);
     }
 
     /**
@@ -70,24 +70,24 @@ class ResponsiveRedirect extends BaseController
 
                 // Redirects mobile users if the rule specifies a different target device.
                 if ($detect->isMobile() && $rule['device_type'] != 'mobile') {
-                    if ($rules['redirect_device_mobile'] == 'on') {
-                        wp_safe_redirect($rules['redirect_url'], 302);
+                    if ($rule['redirect_device_mobile'] == 'on') {
+                        wp_safe_redirect($rule['redirect_url'], 302);
                         exit;
                     }
                 }
 
                 // Redirects tablet users if the rule specifies a different target device.
                 if ($detect->isTablet() && $rule['device_type'] != 'tablet') {
-                    if ($rules['redirect_device_tablet'] == 'on') {
-                        wp_safe_redirect($rules['redirect_url'], 302);
+                    if ($rule['redirect_device_tablet'] == 'on') {
+                        wp_safe_redirect($rule['redirect_url'], 302);
                         exit;
                     }
                 }
 
                 // Redirects desktop users if the rule specifies a different target device.
                 if (!$detect->isMobile() && !$detect->isTablet() && $rule['device_type'] != 'desktop') {
-                    if ($rules['redirect_device_desktop'] == 'on') {
-                        wp_safe_redirect($rules['redirect_url'], 302);
+                    if ($rule['redirect_device_desktop'] == 'on') {
+                        wp_safe_redirect($rule['redirect_url'], 302);
                         exit;
                     }
                 }
