@@ -15,11 +15,11 @@ if (isset($_GET['id'])) {
     <tbody>
         <tr>
             <td>
-                <p class="site_url"><?= get_site_url(); ?>/</p>
+                <p class="site_url"><?= esc_url(get_site_url()); ?>/</p>
                 <p><input type="text" id="orignUrl" name="responsive_redirect_urls[origin_url]" value="<?= esc_attr($rule['origin_url'] ?? ''); ?>" placeholder="books/sample-book" /></p>
             </td>
             <td>
-                <p class="site_url"><?= get_site_url(); ?>/</p>
+                <p class="site_url"><?= esc_url(get_site_url()); ?>/</p>
                 <p><input type="text" id="redirectUrl" name="responsive_redirect_urls[redirect_url]" value="<?= esc_attr($rule['redirect_url'] ?? ''); ?>" placeholder="books/sample-book/mobile-page-url" /></p>
             </td>
         </tr>
