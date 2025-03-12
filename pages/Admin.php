@@ -62,7 +62,15 @@ class Admin extends BaseController
 
     public function render_settings_page()
     {
+        // redirected add/edit rules template
         require_once __DIR__ . '/../templates/settings-page.php';
+        // redirected page list template
+        require_once __DIR__ . '/../templates/settings-page-list.php';
+    }
+    public function render_redirected_pagelist()
+    {
+
+        require_once __DIR__ . '/../templates/settings-page-list.php';
     }
 
     public function render_fields()
@@ -73,42 +81,60 @@ class Admin extends BaseController
     public function sanitize_inputs($input)
     {
         $sanitized = [];
-        $existing_options = get_option('responsive_redirect_urls', []); // Fetch saved options
+
+        // Check if the user has permission to manage options
+        if (!current_user_can('manage_options')) {
+            add_settings_error('responsive_redirect_urls', 'unauthorized', 'You do not have permission to update settings.');
+            return []; // Stop execution if unauthorized
+        }
 
         // Sanitize Origin URL
         if (isset($input['origin_url'])) {
             $sanitized['origin_url'] = sanitize_text_field($input['origin_url']);
-        } else {
-            return $existing_options;
         }
 
         // Sanitize Redirect URL
         if (isset($input['redirect_url'])) {
             $sanitized['redirect_url'] = sanitize_text_field($input['redirect_url']);
+        }
+
+        // Allowed values for the device type radio buttons
+        $allowed_values = ['desktop', 'tablet', 'mobile'];
+
+        if (isset($input['device_type']) && in_array($input['device_type'], $allowed_values, true)) {
+            $sanitized['device_type'] = sanitize_text_field($input['device_type']);
         } else {
-            return $existing_options;
+            $sanitized['device_type'] = 'desktop'; // Default value
         }
 
         // Sanitize checkboxes (Ensure values are 'on' or unset)
-        $sanitized['device_desktop'] = isset($input['device_desktop']) ? 'on' : '';
-        $sanitized['device_tablet'] = isset($input['device_tablet']) ? 'on' : '';
-        $sanitized['device_mobile'] = isset($input['device_mobile']) ? 'on' : '';
-
         $sanitized['redirect_device_desktop'] = isset($input['redirect_device_desktop']) ? 'on' : '';
         $sanitized['redirect_device_tablet'] = isset($input['redirect_device_tablet']) ? 'on' : '';
         $sanitized['redirect_device_mobile'] = isset($input['redirect_device_mobile']) ? 'on' : '';
 
-        // Validate URL format (Optional)
+        // Validate URL 
+        $errors = [];
+
         if (!empty($sanitized['origin_url']) && !preg_match('/^[a-zA-Z0-9\/\-_]+$/', $sanitized['origin_url'])) {
-            add_settings_error('responsive_redirect_urls', 'invalid-origin-url', 'Invalid Origin URL format.');
-            return $existing_options;
+            $errors[] = 'Invalid Origin URL format.';
         }
 
         if (!empty($sanitized['redirect_url']) && !preg_match('/^[a-zA-Z0-9\/\-_]+$/', $sanitized['redirect_url'])) {
-            add_settings_error('responsive_redirect_urls', 'invalid-redirect-url', 'Invalid Redirect URL format.');
-            return $existing_options;
+            $errors[] = 'Invalid Redirect URL format.';
         }
 
-        return $sanitized;
+        // If errors exist, display them and do not save
+        if (!empty($errors)) {
+            foreach ($errors as $error) {
+                add_settings_error('responsive_redirect_urls', 'invalid-data', $error);
+            }
+            return []; // Stop execution and return an empty array
+        }
+
+        // Store the data with 'origin_url' as the key
+        $key = sanitize_title($sanitized['origin_url']); // Ensure key is safe
+        $this->save_rules($key, $sanitized);
+
+        return $sanitized; // Return sanitized data
     }
 }

@@ -60,7 +60,6 @@ class BaseController
             $this->version = '1.0.0';
         }
         $this->plugin_name = 'responsive-redirect';
-        $this->plugin_option_name = 'responsive_redirect';
     }
 
     /**
@@ -84,5 +83,108 @@ class BaseController
     public function get_version()
     {
         return $this->version;
+    }
+
+    /**
+     * The name used to uniquely identify the plugin rule within the wp_options table.
+     *
+     * @since     1.0.0
+     * @return    string    The name of the plugin option rule.
+     */
+    public function get_option_key()
+    {
+        return $this->get_plugin_name() . '_';
+    }
+
+    /**
+     * Saves a redirect rule in the WordPress options table.
+     *
+     * @param string $key The unique identifier for the redirect rule.
+     * @param array $responsive_rules The array containing redirect rule details.
+     */
+    public function save_rules(string $key, array $responsive_rules)
+    {
+        // Check if the current user has the required permission to modify options.
+        if (current_user_can('manage_options')) {
+            // Generate the option key by appending a sanitized version of the key.
+            $option_key = $this->get_option_key() . sanitize_title($key);
+
+            // Store the redirect rule in the WordPress options table.
+            update_option($option_key, $responsive_rules);
+        }
+    }
+
+    /**
+     * Deletes a specific redirect rule from the WordPress options table.
+     *
+     * @param string $key The unique identifier for the redirect rule.
+     * @return bool Returns true if the rule was successfully deleted, false otherwise.
+     */
+    public function delete_redirect_rule($key)
+    {
+        $is_deleted = false;
+
+        // Check if the current user has the required permission to modify options.
+        if (current_user_can('manage_options')) {
+            // Generate the option key by appending a sanitized version of the key.
+            $option_key = $this->get_option_key() . sanitize_title($key);
+
+            // Delete the redirect rule from the WordPress options table.
+            $is_deleted = delete_option($option_key);
+        }
+
+        return $is_deleted;
+    }
+
+    /**
+     * Retrieves a specific redirect rule from the WordPress options table.
+     *
+     * @param string $key The unique identifier for the redirect rule.
+     * @return mixed The stored redirect rule data or false if not found.
+     */
+    public function get_rule(string $key)
+    {
+        // Generate the option key by appending a sanitized version of the key.
+        $option_key = $this->get_option_key() . sanitize_title($key);
+
+        // Retrieve the redirect rule from the WordPress options table.
+        return get_option($option_key);
+    }
+
+    /**
+     * Retrieves all redirect rules stored in the WordPress options table.
+     *
+     * @return array An associative array of all stored redirect rules.
+     */
+    public function get_rules()
+    {
+        global $wpdb;
+
+        // Define the prefix to match option names associated with redirect rules.
+        $prefix = $this->get_option_key() . "%";
+
+        // SQL query to fetch all matching options.
+        $sql = "SELECT option_name, option_value 
+            FROM {$wpdb->options} 
+            WHERE option_name LIKE %s";
+
+        // Prepare and execute the SQL query with the prefix as a wildcard search.
+        $query = $wpdb->prepare($sql, $prefix);
+        $results = $wpdb->get_results($query);
+
+        // Initialize an array to store retrieved redirect rules.
+        $responsive_rules = [];
+
+        // Loop through the results and extract relevant data.
+        foreach ($results as $row) {
+            // Extract the rule key by removing the option key prefix.
+            $key = str_replace($this->get_option_key(), '', $row->option_name);
+
+            // Deserialize the option value (if applicable) and store it in the array.
+            $responsive_rules[$key] = maybe_unserialize($row->option_value);
+        }
+
+        // Return the associative array of redirect rules.
+        return $responsive_rules;
     }
 }

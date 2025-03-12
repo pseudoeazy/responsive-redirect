@@ -1,5 +1,5 @@
 :root {
-  --error: #f77;
+  --error: #ff0000;
   --blue: #0073aa; /* WordPress blue */
   --white: #fff;
   --gray: #ddd;
@@ -27,4 +27,12 @@ html {
 .form-footer {
   display: flex;
   justify-content: flex-end;
+}
+.redirect-no-rule {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem;
 }

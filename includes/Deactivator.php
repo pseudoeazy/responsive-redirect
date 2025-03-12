@@ -26,10 +26,9 @@ class Deactivator
 	 */
 	public static function deactivate()
 	{
-		$role = get_role('administrator');
-
-		if (!empty($role)) {
-			$role->remove_cap('responsive-redirect-manage');
+		$options = get_option('responsive_redirect_urls', []);
+		if (!empty($options)) {
+			delete_option('responsive_redirect_urls');
 		}
 	}
 }

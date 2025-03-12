@@ -23,16 +23,10 @@ class Activator
 	 *
 	 * @since    1.0.0
 	 */
-	public static function activate(BaseController $baseController)
+	public static function activate()
 	{
-		$role = get_role('administrator');
-
-		if (!empty($role)) {
-			$role->add_cap('responsive-redirect-manage');
+		if (!current_user_can('install_plugins')) {
+			wp_die('You do not have sufficient privileges to install plugins.');
 		}
-
-		add_option($baseController->plugin_option_name, array(
-			'redirect_urls' => []
-		));
 	}
 }

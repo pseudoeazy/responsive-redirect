@@ -34,17 +34,26 @@ if (! defined('WP_UNINSTALL_PLUGIN')) {
 	exit;
 }
 
-$role = get_role('administrator');
 
-if (! empty($role)) {
-	$role->remove_cap('responsive-redirect-manage');
-}
 
-if (class_exists('ResponsiveRedirect\\Includes\\BaseController')) {
-	$baseController = new ResponsiveRedirect\Includes\BaseController();
-	$option = get_option($baseController->plugin_option_name);
 
-	if (isset($option)) {
-		delete_option($baseController->plugin_option_name);
+function responsive_redirect_uninstall()
+{
+
+	if (class_exists('ResponsiveRedirect\\Includes\\BaseController')) {
+		// Deregister settings group and delete all options
+		unregister_setting('responsive_redirect_options', 'responsive_redirect_urls');
+
+		$baseController = new ResponsiveRedirect\Includes\BaseController();
+		$responsive_rules = $baseController->get_rules();
+
+		// Delete all responsive rules
+		foreach ($responsive_rules as $rule) {
+
+			if (isset($rule['origin_url'])) {
+				$baseController->delete_redirect_rule($rule['origin_url']);
+			}
+		}
 	}
 }
+responsive_redirect_uninstall();
