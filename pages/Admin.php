@@ -65,13 +65,9 @@ class Admin extends BaseController
         // redirected add/edit rules template
         require_once __DIR__ . '/../templates/settings-page.php';
         // redirected page list template
-        require_once __DIR__ . '/../templates/settings-page-list.php';
+        // require_once __DIR__ . '/../templates/settings-page-list.php';
     }
-    public function render_redirected_pagelist()
-    {
 
-        require_once __DIR__ . '/../templates/settings-page-list.php';
-    }
 
     public function render_fields()
     {

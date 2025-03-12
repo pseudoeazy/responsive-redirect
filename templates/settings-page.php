@@ -12,3 +12,7 @@
         </div>
     </form>
 </div>
+
+<?php
+require_once "settings-page-list.php";
+?>

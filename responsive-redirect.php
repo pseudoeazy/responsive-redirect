@@ -17,7 +17,6 @@
  * Text Domain:       responsive-redirect
  */
 
-use ResponsiveRedirect\Includes\BaseController;
 
 if (!defined('ABSPATH')) {
 	die;
@@ -30,20 +29,6 @@ define('RESPONSIVE_REDIRECT_PLUGIN_URL', plugin_dir_url(__FILE__));
 if (file_exists(__DIR__ . '/vendor/autoload.php')) {
 	require_once __DIR__ . '/vendor/autoload.php';
 }
-
-
-function responsive_redirect_activate()
-{
-	ResponsiveRedirect\Includes\Activator::activate(new BaseController());
-}
-register_activation_hook(__FILE__, 'responsive_redirect_activate');
-
-
-function responsive_redirect_deactivate()
-{
-	ResponsiveRedirect\Includes\Deactivator::deactivate();
-}
-register_deactivation_hook(__FILE__, 'responsive_redirect_deactivate');
 
 
 if (class_exists('ResponsiveRedirect\\Includes\\Loader')) {

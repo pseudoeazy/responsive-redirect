@@ -1,6 +1,9 @@
 <?php
 // Get current data
 $responsive_rules = $this->get_rules();
+echo "<pre>";
+print_r($responsive_rules);
+echo "</pre>";
 
 // Check POST request to delete responsive_rule
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['responsive_redirect_nonce'])) {
@@ -11,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['responsive_redirect_n
     $valid_key = isset($_POST['origin_url']) ? sanitize_text_field($_POST['origin_url']) : null;
     if ($valid_key) {
         $this->delete_redirect_rule($valid_key);
+        $responsive_rules = $this->get_rules();
     }
 }
 
