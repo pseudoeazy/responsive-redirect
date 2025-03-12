@@ -7,7 +7,7 @@
         ?>
         <div class="form-footer">
             <?php
-            submit_button('Save Options', 'primary', 'submit', false);
+            submit_button('Save Options', 'primary button-large', 'submit', false);
             ?>
         </div>
     </form>

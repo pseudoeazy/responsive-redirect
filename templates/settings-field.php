@@ -5,7 +5,7 @@ if (isset($_GET['id'])) {
 
 ?>
 
-<table class="form-table responsive-redirect-table">
+<table class="widefat responsive-redirect-table">
     <thead>
         <tr>
             <th>Origin URL</th>
@@ -15,12 +15,12 @@ if (isset($_GET['id'])) {
     <tbody>
         <tr>
             <td>
-                <p><?= get_site_url(); ?>/</p>
-                <p><input type="text" name="responsive_redirect_urls[origin_url]" value="<?= esc_attr($rule['origin_url'] ?? ''); ?>" placeholder="books/sample-book" /></p>
+                <p class="site_url"><?= get_site_url(); ?>/</p>
+                <p><input type="text" id="orignUrl" name="responsive_redirect_urls[origin_url]" value="<?= esc_attr($rule['origin_url'] ?? ''); ?>" placeholder="books/sample-book" /></p>
             </td>
             <td>
-                <p><?= get_site_url(); ?>/</p>
-                <p><input type="text" name="responsive_redirect_urls[redirect_url]" value="<?= esc_attr($rule['redirect_url'] ?? ''); ?>" placeholder="books/sample-book/mobile-page-url" /></p>
+                <p class="site_url"><?= get_site_url(); ?>/</p>
+                <p><input type="text" id="redirectUrl" name="responsive_redirect_urls[redirect_url]" value="<?= esc_attr($rule['redirect_url'] ?? ''); ?>" placeholder="books/sample-book/mobile-page-url" /></p>
             </td>
         </tr>
         <tr>
@@ -29,28 +29,31 @@ if (isset($_GET['id'])) {
 
                 <p>
                     <input type="radio" name="responsive_redirect_urls[device_type]" value="desktop"
-                        <?php checked($rule['device_type'] ?? '', 'desktop'); ?> />
+                        <?php checked($rule['device_type'] ?? '', 'desktop'); ?>
+                        class="rr_device_type" />
                     Desktop
                 </p>
 
                 <p>
                     <input type="radio" name="responsive_redirect_urls[device_type]" value="tablet"
-                        <?php checked($rule['device_type'] ?? '', 'tablet'); ?> />
+                        <?php checked($rule['device_type'] ?? '', 'tablet'); ?>
+                        class="rr_device_type" />
                     Tablet
                 </p>
 
                 <p>
                     <input type="radio" name="responsive_redirect_urls[device_type]" value="mobile"
-                        <?php checked($rule['device_type'] ?? '', 'mobile'); ?> />
+                        <?php checked($rule['device_type'] ?? '', 'mobile'); ?>
+                        class="rr_device_type" />
                     Mobile
                 </p>
             </td>
 
             <td>
                 <p><label>Device Type</label></p>
-                <p><input type="checkbox" name="responsive_redirect_urls[redirect_device_desktop]" <?php checked($rule['redirect_device_desktop'] ?? '', 'on'); ?> /> Desktop</p>
-                <p><input type="checkbox" name="responsive_redirect_urls[redirect_device_tablet]" <?php checked($rule['redirect_device_tablet'] ?? '', 'on'); ?> /> Tablet</p>
-                <p><input type="checkbox" name="responsive_redirect_urls[redirect_device_mobile]" <?php checked($rule['redirect_device_mobile'] ?? '', 'on'); ?> /> Mobile</p>
+                <p><input type="checkbox" class="rr_redirect_device_type" name="responsive_redirect_urls[redirect_device_desktop]" <?php checked($rule['redirect_device_desktop'] ?? '', 'on'); ?> /> Desktop</p>
+                <p><input type="checkbox" class="rr_redirect_device_type" name="responsive_redirect_urls[redirect_device_tablet]" <?php checked($rule['redirect_device_tablet'] ?? '', 'on'); ?> /> Tablet</p>
+                <p><input type="checkbox" class="rr_redirect_device_type" name="responsive_redirect_urls[redirect_device_mobile]" <?php checked($rule['redirect_device_mobile'] ?? '', 'on'); ?> /> Mobile</p>
             </td>
         </tr>
     </tbody>
