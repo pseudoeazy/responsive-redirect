@@ -1,5 +1,5 @@
 === Responsive Redirect ===
-Contributors: (pseudoeazy)
+Contributors: pseudoeazy
 Donate link: https://paypal.me/eazyisrael?country.x=PH&locale.x=en_US
 Tags: redirect, responsive, mobile redirect, URL redirection
 Requires at least: 5.0
