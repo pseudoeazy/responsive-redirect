@@ -1,6 +1,6 @@
 # Responsive Redirect Plugin
 
-**Contributors:** [@engreazy]
+**Contributors:** [pseudoeazy](https://profiles.wordpress.org/pseudoeazy/)
 **Donate link:** [PayPal](https://paypal.me/eazyisrael?country.x=PH&locale.x=en_US)
 **Requires at least:** 5.0  
 **Tested up to:** 6.4  
@@ -78,7 +78,7 @@ Yes, but if you have aggressive caching enabled, you might need to **clear cache
 
 ## Support
 
-For support, visit [Your Website URL] or create a support ticket on the [WordPress plugin directory](https://wordpress.org/plugins/).
+For support, visit [chibuz.com](https://www.chibuz.com/projects/responsive-redirect) or create a support ticket on the [WordPress plugin directory](https://wordpress.org/plugins/).
 
 ## License
 
