@@ -151,40 +151,44 @@ class BaseController
         return get_option($option_key);
     }
 
+
+
     /**
-     * Retrieves all redirect rules stored in the WordPress options table.
+     * Retrieves redirect rules from the WordPress options table.
      *
-     * @return array An associative array of all stored redirect rules.
+     * @return array An associative array of redirect rules, where the keys are rule names
+     *               and the values are the rule data.
      */
     public function get_rules()
     {
         global $wpdb;
 
-        // Define the prefix to match option names associated with redirect rules.
-        $prefix = $this->get_option_key() . "%";
-
-        // SQL query to fetch all matching options.
-        $sql = "SELECT option_name, option_value 
-            FROM {$wpdb->options} 
-            WHERE option_name LIKE %s";
-
-        // Prepare and execute the SQL query with the prefix as a wildcard search.
-        $query = $wpdb->prepare($sql, $prefix);
-        $results = $wpdb->get_results($query);
-
-        // Initialize an array to store retrieved redirect rules.
-        $responsive_rules = [];
-
-        // Loop through the results and extract relevant data.
-        foreach ($results as $row) {
-            // Extract the rule key by removing the option key prefix.
-            $key = str_replace($this->get_option_key(), '', $row->option_name);
-
-            // Deserialize the option value (if applicable) and store it in the array.
-            $responsive_rules[$key] = maybe_unserialize($row->option_value);
+        if (! isset($wpdb)) {
+            return [];
         }
 
-        // Return the associative array of redirect rules.
-        return $responsive_rules;
+        $option_prefix = $this->get_option_key();
+        $like_prefix   = $option_prefix . '%'; // Wildcard for LIKE query
+
+        // Execute the query directly with prepare() inside get_results()
+        $results = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT option_name, option_value FROM {$wpdb->options} WHERE option_name LIKE %s",
+                $like_prefix
+            )
+        );
+
+        if (empty($results)) {
+            return [];
+        }
+
+        $redirect_rules = [];
+
+        foreach ($results as $row) {
+            $key = str_replace($option_prefix, '', $row->option_name);
+            $redirect_rules[$key] = maybe_unserialize($row->option_value);
+        }
+
+        return $redirect_rules;
     }
 }

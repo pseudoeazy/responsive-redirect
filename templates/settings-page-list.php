@@ -36,18 +36,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['responsive_redirect_n
                 <?php foreach ($responsive_rules as $rule): ?>
                     <tr>
                         <td>
-                            <p><strong>Device Type: </strong> <span><?= esc_attr($rule['device_type']) ?? '' ?></span></p>
-                            <p><?= esc_url(get_site_url() . "/" . $rule['origin_url']) ?? ''; ?></p>
+                            <p><strong>Device Type: </strong> <span><?php echo esc_attr($rule['device_type']) ?? '' ?></span></p>
+                            <p><?php echo esc_url(get_site_url() . "/" . $rule['origin_url']) ?? ''; ?></p>
                         </td>
                         <td>
-                            <p><?= esc_url(get_site_url() . "/" . $rule['redirect_url']) ?? ''; ?></p>
+                            <p><?php echo esc_url(get_site_url() . "/" . $rule['redirect_url']) ?? ''; ?></p>
                         </td>
                         <td>
                             <div class="actions">
-                                <a href="options-general.php?page=responsive-redirect-options&id=<?= esc_attr($rule['origin_url']) ?? '' ?>" class="button-secondary">Edit</a>
+                                <a href="options-general.php?page=responsive-redirect-options&id=<?php echo esc_attr($rule['origin_url']) ?? '' ?>" class="button-secondary">Edit</a>
                                 <form method="POST" action="">
                                     <?php wp_nonce_field('delete_responsive_redirect', 'responsive_redirect_nonce'); ?>
-                                    <input type="hidden" name="origin_url" value="<?= esc_attr($rule['origin_url']) ?? '' ?>" />
+                                    <input type="hidden" name="origin_url" value="<?php echo esc_attr($rule['origin_url']) ?? '' ?>" />
                                     <input type="submit" value="Delete" class="button button-error">
                                 </form>
                             </div>

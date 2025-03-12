@@ -94,7 +94,7 @@ class ResponsiveRedirect extends BaseController
             }
         } catch (MobileDetectException $e) {
             // Handles any exceptions thrown by the MobileDetect library.
-            print_r($e);
+            error_log($e->getMessage());
         }
     }
 }

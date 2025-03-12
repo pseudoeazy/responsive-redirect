@@ -26,11 +26,7 @@
  */
 
 // If uninstall not called from WordPress, then exit.
-if (! defined('WP_UNINSTALL_PLUGIN')) {
-	wp_die(sprintf(
-		esc_html__('%s should only be called when uninstalling the plugin.', 'responsive_redirect'),
-		esc_html(__FILE__)
-	));
+if (!defined('WP_UNINSTALL_PLUGIN')) {
 	exit;
 }
 

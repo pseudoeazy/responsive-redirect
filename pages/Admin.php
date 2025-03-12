@@ -41,8 +41,9 @@ class Admin extends BaseController
         register_setting(
             'responsive_redirect_options',
             'responsive_redirect_urls',
-            ['sanitize_callback' => [$this, 'sanitize_inputs']]
+            [$this, 'sanitize_inputs']
         );
+
 
         add_settings_section(
             'responsive_redirect_section',
