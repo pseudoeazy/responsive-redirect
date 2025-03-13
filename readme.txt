@@ -87,5 +87,5 @@ Initial release - no upgrade necessary.
 == Credits ==
 Developed by [Chibuzor](https://www.chibuz.com/).
 
-For more details, visit [WordPress Plugin Repository](https://wordpress.org/).
+For more details, visit [Responsive Redirect](https://wordpress.org/plugins/responsive-redirect).
 

@@ -109,7 +109,7 @@ Yes, but if you have aggressive caching enabled, you might need to **clear cache
 
 ## Support
 
-For support, visit [chibuz.com](https://www.chibuz.com/projects/responsive-redirect) or create a support ticket on the [WordPress plugin directory](https://wordpress.org/plugins/).
+For support, visit [chibuz.com](https://www.chibuz.com/projects/responsive-redirect) or create a support ticket on the [Responsive Redirect](https://wordpress.org/plugins/responsive-redirect).
 
 ## License
 
