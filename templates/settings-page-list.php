@@ -3,17 +3,24 @@
 $responsive_rules = $this->get_rules();
 
 // Check POST request to delete responsive_rule
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['responsive_redirect_nonce'])) {
-    if (!wp_verify_nonce($_POST['responsive_redirect_nonce'], 'delete_responsive_redirect')) {
-        wp_die('Unauthorized request');
-    }
+if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $valid_key = isset($_POST['origin_url']) ? sanitize_text_field($_POST['origin_url']) : null;
-    if ($valid_key) {
-        $this->delete_redirect_rule($valid_key);
-        $responsive_rules = $this->get_rules();
+    if (isset($_POST['responsive_redirect_nonce'])) {
+        $nonce = sanitize_text_field(wp_unslash($_POST['responsive_redirect_nonce']));
+        if (!wp_verify_nonce($nonce, 'delete_responsive_redirect')) {
+            wp_die('Unauthorized request');
+        }
+
+        $valid_key = isset($_POST['origin_url']) ? wp_unslash($_POST['origin_url']) : null;
+
+        if ($valid_key) {
+            $this->delete_redirect_rule($valid_key);
+
+            $responsive_rules = $this->get_rules();
+        }
     }
 }
+
 
 ?>
 

@@ -8,18 +8,27 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Easily set up conditional redirects based on device type for better user experience.
+Automatically redirects users between mobile and desktop versions of your site based on their device type.
 
 == Description ==
 
 Responsive Redirect is a WordPress plugin that allows you to create conditional redirects based on device type (mobile, tablet, or desktop). This helps optimize user experience by directing visitors to the most suitable version of your site or content.
 
+**How It Works:**
+- Mobile users visiting `example.com` are **automatically redirected** to `example.com/mobile`.
+- If a mobile user switches to desktop, they are **redirected back** to `example.com`.
+- This ensures an optimized browsing experience tailored to each user's device.
+
 **Key Features:**
-* Set up redirection rules based on device type.
-* Support for mobile, tablet, and desktop redirection.
-* Simple configuration in the WordPress admin panel.
-* Lightweight and performance-friendly.
-* Fully compatible with modern WordPress versions.
+- Fully compatible with modern WordPress versions.
+- **Automatic Mobile/Desktop redirection** – based on device type.
+- **Two-Way Redirection** – Ensures users always view the correct version.
+- **Custom Redirect Rules** – Define your own conditions for specific pages or users.
+- Support for mobile, tablet, and desktop redirection.
+- Simple configuration in the WordPress admin panel.
+- Lightweight and performance-friendly.
+
+📥 **Get Started Now** and enhance your website's mobile-friendliness!
 
 == Installation ==
 
@@ -29,6 +38,9 @@ Responsive Redirect is a WordPress plugin that allows you to create conditional 
 4. Add new redirection rules based on device type and URLs.
 
 == Frequently Asked Questions ==
+
+= Can I set a custom redirection rule for specific pages? =
+Absolutely! You can define page-specific rules in the settings panel.
 
 = How do I add a redirect rule? =
 Go to **Settings > Responsive Redirect**, enter the target URL, choose the device type, and save the rule.
@@ -55,21 +67,8 @@ Currently, wildcard support is not available, but future updates may include it.
 = 1.0.0 =
 Initial release - no upgrade necessary.
 
-== Arbitrary Section ==
-
-For advanced configurations, developers can use the `responsive_redirect` filter to modify redirection behavior programmatically.
-
-== A Brief Markdown Example ==
-
-**Ordered List:**
-1. Install and activate the plugin.
-2. Configure your redirection rules.
-3. Save and test the settings.
-
-**Unordered List:**
-* Lightweight and fast.
-* Easy to set up.
-* Works seamlessly with WordPress.
+== Credits ==
+Developed by Chibuzor.
 
 For more details, visit [WordPress Plugin Repository](https://wordpress.org/).
 

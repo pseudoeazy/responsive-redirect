@@ -1,6 +1,7 @@
 <?php
 if (isset($_GET['id'])) {
-    $rule = $this->get_rule($_GET['id']);
+    $id = sanitize_text_field(wp_unslash($_GET['id']));
+    $rule = $this->get_rule($id);
 }
 
 ?>

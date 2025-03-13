@@ -13,13 +13,26 @@
 
 The **Responsive Redirect Plugin** allows WordPress site owners to **redirect users based on device type (mobile, tablet, or desktop)**. This ensures that users always land on the most optimized version of the site for their screen size.
 
+**How It Works:**
+
+- Mobile users visiting `example.com` are **automatically redirected** to `example.com/mobile`.
+- If a mobile user switches to desktop, they are **redirected back** to `example.com`.
+- This ensures an optimized browsing experience tailored to each user's device.
+
 ### Features:
 
 - Redirect users based on **mobile, tablet, or desktop** detection.
-- Set **custom redirect rules** from the admin panel.
+- **Automatic Mobile/Desktop redirection** – based on device type.
+- **Two-Way Redirection** – Ensures users always view the correct version.
+- **Custom Redirect Rules** – Define your own conditions for specific pages.
 - Works with **any WordPress theme**.
 - SEO-friendly redirects using **302 status codes**.
-- Lightweight and optimized for performance.
+- Fully compatible with modern WordPress versions.
+- Support for mobile, tablet, and desktop redirection.
+- Simple configuration in the WordPress admin panel.
+- Lightweight and performance-friendly.
+
+📥 **Get Started Now** and enhance your website's mobile-friendliness!
 
 ## Installation
 
