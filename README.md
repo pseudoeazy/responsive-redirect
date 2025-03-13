@@ -34,6 +34,24 @@ The **Responsive Redirect Plugin** allows WordPress site owners to **redirect us
 
 📥 **Get Started Now** and enhance your website's mobile-friendliness!
 
+## Screenshots
+
+### Admin Panel Settings
+
+![Admin Settings](assets/admin-settings.png)
+
+### Mobile Redirect in Action
+
+![Mobile Redirect](assets/mobile-redirect.png)
+
+### Desktop Redirect in Action
+
+![Mobile Redirect](assets/desktop-redirect.png)
+
+### Responsive Redirect in Action
+
+![Responsive Redirect](assets/responsive-redirection.png)
+
 ## Installation
 
 ### Automatic Installation
@@ -96,3 +114,7 @@ For support, visit [chibuz.com](https://www.chibuz.com/projects/responsive-redir
 ## License
 
 This plugin is open-source software licensed under the **GPLv2 or later**. See the full license at [GNU.org](https://www.gnu.org/licenses/gpl-2.0.html).
+
+## Credits
+
+Developed by [Chibuzor](https://www.chibuz.com/).

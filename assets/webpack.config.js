@@ -36,6 +36,6 @@ module.exports = {
       filename: 'css/[name].css',
     }),
   ],
-  mode: 'development', // Change to 'production' for minified output
+  mode: 'production', // Change to 'production' for minified output
   devtool: 'source-map',
 };

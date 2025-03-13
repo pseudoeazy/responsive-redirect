@@ -56,6 +56,23 @@ Currently, wildcard support is not available, but future updates may include it.
 1. **Plugin Settings Page** - Configure redirection rules easily.
 2. **Example Redirection in Action** - See how visitors are redirected based on device type.
 
+1. Admin Panel Settings  
+   Screenshot of the admin settings panel.  
+   ![Admin Settings](assets/admin-settings.png)
+
+2. Mobile Redirect in Action  
+   Demonstrates how mobile users are redirected.  
+   ![Mobile Redirect](assets/mobile-redirect.png)
+
+3. Desktop Redirect in Action  
+   Shows how desktop users are redirected.  
+   ![Desktop Redirect](assets/desktop-redirect.png)
+
+4. Responsive Redirect in Action  
+   Example of responsive redirection in action.  
+   ![Responsive Redirect](assets/responsive-redirection.png)
+
+
 == Changelog ==
 
 = 1.0.0 =
@@ -68,7 +85,7 @@ Currently, wildcard support is not available, but future updates may include it.
 Initial release - no upgrade necessary.
 
 == Credits ==
-Developed by Chibuzor.
+Developed by [Chibuzor](https://www.chibuz.com/).
 
 For more details, visit [WordPress Plugin Repository](https://wordpress.org/).
 
