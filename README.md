@@ -40,18 +40,6 @@ The **Responsive Redirect Plugin** allows WordPress site owners to **redirect us
 
 ![Admin Settings](assets/admin-settings.png)
 
-### Mobile Redirect in Action
-
-![Mobile Redirect](assets/mobile-redirect.png)
-
-### Desktop Redirect in Action
-
-![Mobile Redirect](assets/desktop-redirect.png)
-
-### Responsive Redirect in Action
-
-![Responsive Redirect](assets/responsive-redirection.png)
-
 ## Installation
 
 ### Automatic Installation
